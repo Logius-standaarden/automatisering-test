@@ -12,4 +12,9 @@ jobs:
   check:
     needs: build
     name: Check
-    uses: Logius-standaarden/Automatisering/.github/workflows/check.yml@main    
+    uses: Logius-standaarden/Automatisering/.github/workflows/check.yml@main
+  publish:
+    needs: build
+    name: Publish (Logius)
+    uses: Logius-standaarden/Automatisering/.github/workflows/publish.yml@pr-timvdlippe-fix-publiceren-naar-github-pages
+    secrets: inherit

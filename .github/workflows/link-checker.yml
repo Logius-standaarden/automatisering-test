@@ -1,9 +1,9 @@
 name: Check published links
 on:
   workflow_dispatch:
-  schedule:
+  # schedule:
     # Run on Mondays at 5:45 UTC
-    - cron: '45 * * * *'
+    # - cron: '45 * * * *'
 
 jobs:
   build:

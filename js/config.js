@@ -1,4 +1,4 @@
-let respecConfig = {
+globalThis.respecConfig = {
   useLogo: true,
   useLabel: true,
   license: "cc-by",

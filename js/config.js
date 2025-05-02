@@ -2,7 +2,7 @@ globalThis.respecConfig = {
   useLogo: true,
   useLabel: true,
   license: "cc-by",
-  specStatus: "DEF",
+  specStatus: "WV",
   specType: "HR",
   pubDomain: "testing",
   shortName: "test",

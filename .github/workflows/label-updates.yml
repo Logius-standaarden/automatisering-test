@@ -24,7 +24,7 @@ jobs:
                 "Status: Klaar voor release",
               ]
             }'
-          elif ${{ github.event.pull_request.state == "closed" }}; then
+          elif ${{ github.event.pull_request.state == 'closed' }}; then
             echo "Afgewezen"
             gh api \
               --method POST \

@@ -8,36 +8,6 @@ on:
       - closed
 
 jobs:
-  update_labels:
-    name: "Update labels"
-    runs-on: ubuntu-22.04
-    env:
-      GH_TOKEN: ${{ github.token }}
-    steps:
-      - run: |
-          gh api ${{ github.event.pull_request._links.issue.href }}/labels \
-            --jq 'map(select(.name | startswith("Status: ") == false) | .name)' > labels.json
-          NEW_LABEL=""
-          if ${{ github.event.pull_request.merged == true }}; then
-            echo "Merged"
-            NEW_LABEL="Status: Klaar voor release"
-          elif ${{ github.event.pull_request.state == 'closed' }}; then
-            echo "Afgewezen"
-            NEW_LABEL="Status: Afgewezen"
-          else
-            review_status=$(gh api ${{ github.event.pull_request._links.self.href }}/reviews --jq 'map(select(.author_association == "MEMBER")) | last.state')
-            if [[ "$review_status" == "APPROVED" ]]; then
-              echo "Approved"
-              NEW_LABEL="Status: Ter goedkeuring"
-            else
-              echo "In bewerking"
-              NEW_LABEL="Status: In bewerking"
-            fi
-          fi
-
-          echo $NEW_LABEL
-
-          gh api \
-            --method PUT \
-            ${{ github.event.pull_request._links.issue.href }}/labels \
-            --input - <<< $(node -e "console.log(JSON.stringify(require('./labels.json').concat(['$NEW_LABEL'])))")
+  update-labels:
+    name: Update labels
+    uses: Logius-standaarden/Automatisering/.github/workflows/label-updates.yml@label-updates

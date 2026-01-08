@@ -1,4 +1,7 @@
-globalThis.respecConfig = {
+import { loadRespecWithConfiguration } from "https://logius-standaarden.github.io/publicatie/respec/organisation-config.mjs";
+import { generateMermaidFigures } from "https://logius-standaarden.github.io/publicatie/respec/plugins/mermaid.mjs";
+
+loadRespecWithConfiguration({
   useLogo: true,
   useLabel: true,
   license: "cc-by",
@@ -11,6 +14,9 @@ globalThis.respecConfig = {
 
   // TODO: Verwijder voordat de release plaats vindt
   latestVersion: "https://github.com/logius-standaarden/automatisering-test/",
+  prevVersion: [],
+
+  postProcess: [generateMermaidFigures],
 
   editors:
     [
@@ -29,13 +35,4 @@ globalThis.respecConfig = {
       }
     ],
   github: "https://github.com/Logius-standaarden/ReSpec-template",
-
-
-  // Create PDF and link to file in header (optional):
-  alternateFormats: [
-      {
-          label: "pdf",
-          uri: "template.pdf",
-      },
-  ],
-};
+});

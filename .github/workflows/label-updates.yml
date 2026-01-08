@@ -1,6 +1,10 @@
 name: Update labels
 on:
+  pull_request_review:
   pull_request_target:
+    types:
+      - opened
+      - closed
 
 jobs:
   update_labels:
@@ -12,12 +16,45 @@ jobs:
       - run: |
           if ${{ github.event.pull_request.merged == true }}; then
             echo "Merged"
+            gh api \
+              --method POST \
+              ${{ github.event.pull_request._links.self.href }}/labels \
+              --input - <<< '{
+              "labels": [
+                "Status: Klaar voor release",
+              ]
+            }'
+          elif ${{ github.event.pull_request.state == "closed" }}; then
+            echo "Afgewezen"
+            gh api \
+              --method POST \
+              ${{ github.event.pull_request._links.self.href }}/labels \
+              --input - <<< '{
+              "labels": [
+                "Status: Afgewezen",
+              ]
+            }'
           else
             review_status=$(gh api ${{ github.event.pull_request._links.self.href }}/reviews --jq 'map(select(.author_association == "MEMBER")) | last.state')
-            echo $review_status
             if [[ "$review_status" == "APPROVED" ]]; then
               echo "Approved"
+              gh api \
+                --method POST \
+                ${{ github.event.pull_request._links.self.href }}/labels \
+                --input - <<< '{
+                "labels": [
+                  "Status: Ter goedkeuring",
+                ]
+              }'
             else
               echo "In bewerking"
+              gh api \
+                --method POST \
+                ${{ github.event.pull_request._links.self.href }}/labels \
+                --input - <<< '{
+                "labels": [
+                  "Status: In bewerking",
+                ]
+              }'
             fi
           fi

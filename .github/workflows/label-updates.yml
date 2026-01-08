@@ -37,6 +37,6 @@ jobs:
           echo $NEW_LABEL
 
           gh api \
-            --method POST \
+            --method PUT \
             ${{ github.event.pull_request._links.issue.href }}/labels \
             --input - <<< $(node -e "console.log(JSON.stringify(require('./labels.json').concat(['$NEW_LABEL'])))")

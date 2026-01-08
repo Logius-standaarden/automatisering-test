@@ -18,7 +18,7 @@ jobs:
             echo "Merged"
             gh api \
               --method POST \
-              ${{ github.event.pull_request._links.self.href }}/labels \
+              ${{ github.event.pull_request._links.issue.href }}/labels \
               --input - <<< '{
               "labels": [
                 "Status: Klaar voor release",
@@ -28,7 +28,7 @@ jobs:
             echo "Afgewezen"
             gh api \
               --method POST \
-              ${{ github.event.pull_request._links.self.href }}/labels \
+              ${{ github.event.pull_request._links.issue.href }}/labels \
               --input - <<< '{
               "labels": [
                 "Status: Afgewezen",
@@ -40,7 +40,7 @@ jobs:
               echo "Approved"
               gh api \
                 --method POST \
-                ${{ github.event.pull_request._links.self.href }}/labels \
+                ${{ github.event.pull_request._links.issue.href }}/labels \
                 --input - <<< '{
                 "labels": [
                   "Status: Ter goedkeuring",
@@ -50,7 +50,7 @@ jobs:
               echo "In bewerking"
               gh api \
                 --method POST \
-                ${{ github.event.pull_request._links.self.href }}/labels \
+                ${{ github.event.pull_request._links.issue.href }}/labels \
                 --input - <<< '{
                 "labels": [
                   "Status: In bewerking",

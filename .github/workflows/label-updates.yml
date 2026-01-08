@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - run: |
-          if [ ${{ github.event.pull_request.merged == true }} ]; then
+          if ${{ github.event.pull_request.merged == true }}; then
             echo "Merged"
           else
-            review_status=$(gh api {{ github.event.pull_request._links.self }}/reviews --jq 'map(select(.author_association == "MEMBER")) | last.state')
+            review_status=$(gh api ${{ github.event.pull_request._links.self }}/reviews --jq 'map(select(.author_association == "MEMBER")) | last.state')
             echo $review_status
-            if [ "$review_status" == "APPROVED" ]; then
+            if [[ "$review_status" == "APPROVED" ]]; then
               echo "Approved"
             else
               echo "In bewerking"

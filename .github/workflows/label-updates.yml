@@ -3,6 +3,7 @@ on:
   pull_request_review:
   pull_request_target:
     types:
+      - edited
       - opened
       - reopened
       - closed
@@ -10,4 +11,4 @@ on:
 jobs:
   update-labels:
     name: Update labels
-    uses: Logius-standaarden/Automatisering/.github/workflows/label-updates.yml@label-updates
+    uses: Logius-standaarden/Automatisering/.github/workflows/label-updates.yml@beheer-label-updates

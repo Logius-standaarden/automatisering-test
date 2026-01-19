@@ -11,4 +11,6 @@ on:
 jobs:
   update-labels:
     name: Update labels
-    uses: Logius-standaarden/Automatisering/.github/workflows/label-updates.yml@beheer-label-updates
+    uses: Logius-standaarden/Automatisering/.github/workflows/label-updates.yml@zet-overleg-waarde
+    with:
+      technisch_overleg: DK

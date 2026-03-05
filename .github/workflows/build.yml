@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build
-    uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@bouw-consultatie-versie
+    uses: Logius-standaarden/Automatisering/.github/workflows/build.yml@main
   check:
     needs: build
     name: Check
@@ -16,5 +16,5 @@ jobs:
   publish:
     needs: build
     name: Publish (Logius)
-    uses: Logius-standaarden/Automatisering/.github/workflows/publish.yml@bouw-consultatie-versie
+    uses: Logius-standaarden/Automatisering/.github/workflows/publish.yml@genereer-consultatie-versie
     secrets: inherit

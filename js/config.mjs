@@ -23,7 +23,7 @@ loadRespecWithConfiguration({
       {
         name: "Logius Standaarden",
         company: "Logius",
-        companyURL: "https://github.com/Logius-standaarden",
+        companyURL: "https://www.logius.nl",
       }
     ],
   authors:
@@ -31,7 +31,7 @@ loadRespecWithConfiguration({
       {
         name: "Logius Standaarden",
         company: "Logius",
-        companyURL: "https://github.com/Logius-standaarden",
+        companyURL: "https://www.logius.nl",
       }
     ],
   github: "https://github.com/Logius-standaarden/ReSpec-template",

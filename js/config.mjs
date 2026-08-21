@@ -5,7 +5,7 @@ loadRespecWithConfiguration({
   useLogo: true,
   useLabel: true,
   license: "cc-by",
-  specStatus: "VV",
+  specStatus: "DEF",
   specType: "HR",
   pubDomain: "dk",
   shortName: "test",

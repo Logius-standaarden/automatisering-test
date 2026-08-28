@@ -12,6 +12,8 @@ loadRespecWithConfiguration({
   publishDate: "2026-08-28",
   publishVersion: "0.0.2",
 
+  prevVersion: [],
+
   postProcess: [generateMermaidFigures],
 
   editors:
